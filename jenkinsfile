@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+	stage('install') {
+	   steps {
+		timestamps {
+		sh 'sudo apt-get update'
+		sh 'sudo apt-get upgrade -y -f'
+		sh 'sudo apt-get install -y -f libboost-dev'
+		sh 'sudo apt-get install -y -f libprotobuf-dev protobuf-compiler libprotoc-dev'
+		sh 'sudo apt-get install -y -f libboost-test-dev libboost-program-options-dev'
+		sh  'sudo apt-get install -y -f libc-ares-dev libcurl4-openssl-dev'
+		sh 'sudo apt-get install -y -f zlib1g-dev libgd-dev'
+		sh 'sudo apt-get install -y -f cmake'
+		}
+	   }
+	}
+	stage('build') {
+	    steps {
+		timestamps {
+		sh './build.sh'
+		}
+	    }
+	}
+    }
+}

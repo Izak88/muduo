@@ -1,0 +1,17 @@
+image: abstruse
+
+matrix:
+  - env: NODE_VERSION=8
+
+install:
+  - sudo apt-get update
+  - sudo apt-get upgrade -y -f
+  - sudo apt-get install -y -f libboost-dev
+  - sudo apt-get install -y -f libprotobuf-dev protobuf-compiler libprotoc-dev
+  - sudo apt-get install -y -f libboost-test-dev libboost-program-options-dev
+  - sudo apt-get install -y -f libc-ares-dev libcurl4-openssl-dev
+  - sudo apt-get install -y -f zlib1g-dev libgd-dev
+  - sudo apt-get install -y -f cmake
+
+script:
+  - ./build.sh
